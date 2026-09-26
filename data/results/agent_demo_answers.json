@@ -1,0 +1,26 @@
+[
+  {
+    "question": "What is the summary of 'Continuous Benchmark Evaluation for Enterprise Retrieval Pipelines'?",
+    "answer": [
+      {
+        "type": "text",
+        "text": "Here is a summary of the paper **\"Continuous Benchmark Evaluation for Enterprise Retrieval Pipelines\"**:\n\n### **Overview**\n* **Title:** Continuous Benchmark Evaluation for Enterprise Retrieval Pipelines\n* **Authors:** Quang Le and Yen Vu\n* **Categories:** Evaluation Methodology, Enterprise Systems\n\n---\n\n### **Key Contributions & Findings**\n* **Problem:** Static benchmarks are inadequate for evaluating enterprise retrieval pipelines because enterprise knowledge bases constantly evolve, leading to **domain drift** that static evaluation sets fail to capture over time.\n* **Solution:** The authors establish an automated system featuring a **synthetic test generator**. Whenever new corpora or documents are ingested into the enterprise knowledge base, the generator automatically creates paired evaluation test sets.\n* **Impact:** This approach enables **continuous, dynamic evaluation** of retrieval pipelines, ensuring that benchmarks remain aligned with changing domain data and corpus updates.",
+        "extras": {
+          "signature": "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"
+        }
+      }
+    ]
+  },
+  {
+    "question": "Who authored 'Multi-Agent Consensus for High-Stakes Fact Verification'?",
+    "answer": [
+      {
+        "type": "text",
+        "text": "The paper **\"Multi-Agent Consensus for High-Stakes Fact Verification\"** was authored by **Phong Vu** and **Ngan Hoang**.",
+        "extras": {
+          "signature": "Eu8CCuwCAWkUfRNuUaiNkhQWQoGJqFZGnr82LN4XCDoaVX1QkJVRDHvxuPEf4YaVzr2uCaqIrAg54dahJhHwmJTzy0I9iQRjVodYMD1WQgHeDUc0YIWEbDH1MXmzguoirWicQGK6EVGKL+vdcr+JhQOJLNQ3HmWyuOQTKW+NBqBqsfmYqdvM+FGghfq0gJtBx9DxctfckUaW0HJLGW7/bL2dXtCeQ7KuUUnlrwJrK/eQRS/yeQdRW1I2TyVO3nkNNcTszLk517/CR5v23NxC49fHdAUZsEuDEGINusR8Nlt0OcvR+KbARdlpcuwmskFtJ0ivXFFjpKOu27h/uOsMZ19nLcgpuTtcBuVOfgFSwdsbKJFKI9zgoQfIiyxfuvAEtaEmOaOveO7r4EehoBEoslRc2s/HncwPJxmQIjUCAQxxV+zZ9asFmxCNp01iog7cj/vko0Uw+4fUxbFSgEB/S1e1sGl/LsVzhfrGaXlmsukslg=="
+        }
+      }
+    ]
+  }
+]

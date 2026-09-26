@@ -45,8 +45,13 @@ def _token_f1(reference: str, prediction: str) -> float:
     return 2 * precision * recall / (precision + recall)
 
 
+_llm_judge_unavailable: bool = False
+
+
 def _judge_answer(settings: Settings, question: str, reference: str, prediction: str) -> JudgeVerdict:
-    prompt = f"""
+    global _llm_judge_unavailable
+    if not _llm_judge_unavailable:
+        prompt = f"""
 Evaluate the model answer against the reference answer.
 
 Question: {question}
@@ -58,16 +63,18 @@ Return:
 - correct = true only when the answer is materially correct
 - short reasoning
 """.strip()
-    try:
-        llm = build_llm(settings=settings, temperature=0.0).with_structured_output(JudgeVerdict)
-        return llm.invoke(prompt)
-    except Exception:
-        score = 5 if _token_f1(reference, prediction) >= 0.95 else 3 if _token_f1(reference, prediction) >= 0.5 else 1
-        return JudgeVerdict(
-            score=score,
-            correct=score >= 3,
-            reasoning="Fallback heuristic judge used because the LLM evaluator was unavailable.",
-        )
+        try:
+            llm = build_llm(settings=settings, temperature=0.0).with_structured_output(JudgeVerdict)
+            return llm.invoke(prompt)
+        except Exception:
+            _llm_judge_unavailable = True
+
+    score = 5 if _token_f1(reference, prediction) >= 0.95 else 3 if _token_f1(reference, prediction) >= 0.5 else 1
+    return JudgeVerdict(
+        score=score,
+        correct=score >= 3,
+        reasoning="Fallback heuristic judge used because the LLM evaluator was unavailable.",
+    )
 
 
 def _run_ragas(settings: Settings, answers: list[dict[str, Any]]) -> dict[str, Any]:
