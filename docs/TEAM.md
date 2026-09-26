@@ -1,8 +1,10 @@
 # Danh Sách Thành Viên & Báo Cáo Phân Công Nhóm
 
-- **Tên Nhóm:** `[Điền tên nhóm]`
-- **Mã Nhóm / Lớp:** `K4-L3-DAY10`
-- **Tên Repository Nộp Bài:** `K4-L3-DAY10-TenNhom-DataPipeline`
+- **Tên nhóm:** `67`
+- **Mã Nhóm / Lớp:** `K4`
+- **Tên Repository Nộp Bài:** `https://github.com/huy20/K4-L3B-DAY10-67-DataPipelineDataObservability`
+
+> **Mô hình làm việc:** Cả 5 thành viên **độc lập triển khai trọn vẹn pipeline** (Ingestion → Cleaning → Index → Evaluation → Observability → Corruption/Repair). Sau đó Trưởng nhóm đánh giá, chọn bản tốt nhất và hợp nhất vào nhánh `main`.
 
 ---
 
@@ -10,49 +12,52 @@
 
 | STT | Họ và tên | MSSV | Email | Vai trò & Phân công công việc | Báo cáo cá nhân |
 |---:|---|---|---|---|---|
-| 1 | | | | Trưởng nhóm / Pipeline Integrator (`core/`, `phase1.py`, `corruption_flow.py`) | `report/<MSSV1>_HoTen.md` |
-| 2 | | | | Data Foundation & Recovery (`crossref.py`, `cleaning.py`, raw data) | `report/<MSSV2>_HoTen.md` |
-| 3 | | | | RAG & Vector Index (`retrieval/index.py`, `embeddings.py`, ChromaDB) | `report/<MSSV3>_HoTen.md` |
-| 4 | | | | Observability & Evaluation (`quality.py` GX 1.x, `testset.py`, reporting) | `report/<MSSV4>_HoTen.md` |
+| 1 | Phùng Quang Minh Huy | 2A202602610 | [email] | Trưởng nhóm — Full-pipeline + Đánh giá & Hợp nhất bản tốt nhất vào `main` | `report/individual_report.md` |
+| 2 | Lưu Nguyên Khôi | 2A202602547 | [email] | Full-pipeline (Ingestion → Cleaning → Index → Evaluation → Observability → Corruption/Repair) | `report/2A202602547_LuuNguyenKhoi.md` |
+| 3 | Chu Nguyên Dương | 2A202602660 | [email] | Full-pipeline (Ingestion → Cleaning → Index → Evaluation → Observability → Corruption/Repair) | `report/2A202602660_ChuNguyenDuong.md` |
+| 4 | Nguyễn Minh Hiếu | 2A202602669 | [email] | Full-pipeline (Ingestion → Cleaning → Index → Evaluation → Observability → Corruption/Repair) | `report/2A202602669_NguyenMinhHieu.md` |
+| 5 | Phan Đại Cương | 2A202602510 | [email] | Full-pipeline (Ingestion → Cleaning → Index → Evaluation → Observability → Corruption/Repair) | `report/2A202602510_PhanDaiCuong.md` |
 
-*(Nếu nhóm có 3 hoặc 5-6 thành viên, xem bảng phân công chi tiết theo vai trò trong file `CHECKPOINTS.md`)*.
+---
+
+## # Phạm vi công việc chung (mỗi thành viên thực hiện đầy đủ)
+
+| Khối | Module | Artifact bàn giao |
+|---|---|---|
+| Ingestion & Data Lineage | `src/ingestion/crossref.py` | `data/raw/crossref_response.json`, `data/raw/crossref_records.json` (24 bài) |
+| Cleaning & Corruption | `src/ingestion/cleaning.py`, `src/ingestion/corruption.py` | `data/clean/papers_clean*.{csv,json}`, `data/results/corruption_log.json` |
+| RAG & Vector Index | `src/retrieval/` (`index.py`, `embeddings.py`, `qa.py`) | `data/chroma/`, `data/embeddings/`, collections `papers-baseline` / `papers-corrupted` / `papers-repaired` |
+| Observability | `src/observability/quality.py`, `src/observability/reporting.py` | `data/quality/*`, `data/quality/gx/*` |
+| Evaluation | `src/evaluation/testset.py`, `src/evaluation/metrics.py` | `data/eval/test_set.json`, `data/results/*_metrics.json` |
+| Pipeline / Orchestration | `src/pipelines/phase1.py`, `src/pipelines/corruption_flow.py`, `src/core/` | `data/reports/phase1_report.md`, `data/reports/corruption_report.md`, `data/results/repair_log.json` |
+
+**Bản hợp nhất trên `main`** là phiên bản do Trưởng nhóm Phùng Quang Minh Huy đánh giá là đầy đủ và ổn định nhất; mọi thành viên đều có commit trên nhánh `main`.
 
 ---
 
 ## # Cá nhân
 
-### ## HoVaTen1-MSSV1
-- **Vai trò:** Trưởng nhóm & Điều phối Pipeline.
-- **Công việc chi tiết đã hoàn thành:**
-  - Thiết lập cấu hình hệ thống `core/config.py` và đường dẫn artifacts `core/utils.py`.
-  - Kết nối luồng thực thi trong `src/pipelines/phase1.py` và `src/pipelines/corruption_flow.py`.
-  - Kiểm tra tính nhất quán của các artifacts và theo dõi Contributor tracking trên GitHub nhánh `main`.
-- **Điều học được / Đóng góp chính:**
-  - Hiểu sâu sắc về thiết kế Idempotent Pipeline và quản lý trạng thái luồng dữ liệu đa tầng.
+### ## Phùng Quang Minh Huy — 2A202602610
+- **Vai trò:** Trưởng nhóm — Full-pipeline + Đánh giá & Hợp nhất.
+- **Công việc chi tiết đã hoàn thành:** Triển khai trọn vẹn pipeline; điều phối & hợp nhất bản tốt nhất vào `main`; kiểm tra tính nhất quán artifact 3 trạng thái và idempotency.
+- **Đóng góp chính:** Quyết định kiến trúc orchestrator tự chứa (`run_corruption_flow.py`) và cơ chế Idempotent Repair tái dựng từ raw.
 
-### ## HoVaTen2-MSSV2
-- **Vai trò:** Phụ trách Ingestion, Làm sạch & Phục hồi dữ liệu.
-- **Công việc chi tiết đã hoàn thành:**
-  - Xây dựng module thu thập Crossref API với cơ chế Fallback offline trong `src/ingestion/crossref.py`.
-  - Chuẩn hóa schema, tính toán trường `age_days` và `text_for_embedding` trong `src/ingestion/cleaning.py`.
-  - Thực thi cơ chế Idempotent Repair phục hồi dữ liệu từ raw snapshot.
-- **Điều học được / Đóng góp chính:**
-  - Kỹ thuật truy vết nguồn gốc dữ liệu (Data Lineage) và bảo toàn raw snapshot trước khi biến đổi.
+### ## Lưu Nguyên Khôi — 2A202602547
+- **Vai trò:** Full-pipeline implementer.
+- **Công việc chi tiết đã hoàn thành:** Xây dựng đầy đủ ingest → clean → index → eval → observability → corruption/repair; chú trọng chuẩn hóa `text_for_embedding` 5 phần và xử lý ngày thiếu.
+- **Đóng góp chính:** Quy tắc làm sạch dữ liệu và xử lý `published` thiếu theo hướng "unknown, không tính stale".
 
-### ## HoVaTen3-MSSV3
-- **Vai trò:** Phụ trách RAG, Vector Database & Embedding.
-- **Công việc chi tiết đã hoàn thành:**
-  - Quản lý mô hình embedding `sentence-transformers/all-MiniLM-L6-v2`.
-  - Nạp và quản lý 3 collection riêng biệt trong ChromaDB (`papers-baseline`, `papers-corrupted`, `papers-repaired`).
-  - Xây dựng QA Agent truy vấn ngữ cảnh chính xác theo tài liệu.
-- **Điều học được / Đóng góp chính:**
-  - Cách cô lập các không gian vector để so sánh khách quan giữa dữ liệu sạch và dữ liệu bị lỗi.
+### ## Chu Nguyên Dương — 2A202602660
+- **Vai trò:** Full-pipeline implementer.
+- **Công việc chi tiết đã hoàn thành:** Xây dựng đầy đủ pipeline; chú trọng Quality Gate Great Expectations 1.x và Freshness SLA.
+- **Đóng góp chính:** Chuyển đổi sang cú pháp GX 1.x (ephemeral context + ExpectationSuite) thay cho cú pháp cũ.
 
-### ## HoVaTen4-MSSV4
-- **Vai trò:** Phụ trách Data Observability & Benchmark Evaluation.
-- **Công việc chi tiết đã hoàn thành:**
-  - Thiết lập Quality Gate theo chuẩn mới **Great Expectations 1.x** và giám sát Freshness SLA trong `src/observability/quality.py`.
-  - Xây dựng bộ câu hỏi đánh giá chuẩn trong `src/evaluation/testset.py`.
-  - Đo lường và xuất bảng đối chiếu 3 trạng thái vào `data/reports/corruption_report.md`.
-- **Điều học được / Đóng góp chính:**
-  - Cách thiết lập hệ thống cảnh báo sớm chặn đứng hiện tượng Silent Failure trước khi dữ liệu vào serving layer.
+### ## Nguyễn Minh Hiếu — 2A202602669
+- **Vai trò:** Full-pipeline implementer.
+- **Công việc chi tiết đã hoàn thành:** Xây dựng đầy đủ pipeline; chú trọng bộ test set 4 nhóm và đo lường retrieval/answer quality.
+- **Đóng góp chính:** Thiết kế câu hỏi neo theo exact title và fallback category `Uncategorized`.
+
+### ## Phan Đại Cương — 2A202602510
+- **Vai trò:** Full-pipeline implementer.
+- **Công việc chi tiết đã hoàn thành:** Xây dựng đầy đủ pipeline; chú trọng vector index ChromaDB và embedding MiniLM.
+- **Đóng góp chính:** Cấu hình 3 collection cosine độc lập và `record_id` duy nhất cho mỗi tài liệu.

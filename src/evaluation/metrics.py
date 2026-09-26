@@ -45,7 +45,18 @@ def _token_f1(reference: str, prediction: str) -> float:
     return 2 * precision * recall / (precision + recall)
 
 
+def _heuristic_verdict(reference: str, prediction: str) -> JudgeVerdict:
+    score = 5 if _token_f1(reference, prediction) >= 0.95 else 3 if _token_f1(reference, prediction) >= 0.5 else 1
+    return JudgeVerdict(
+        score=score,
+        correct=score >= 3,
+        reasoning="Deterministic heuristic judge used because the LLM evaluator was disabled or unavailable.",
+    )
+
+
 def _judge_answer(settings: Settings, question: str, reference: str, prediction: str) -> JudgeVerdict:
+    if os.getenv("RUN_LLM_JUDGE", "").lower() not in {"1", "true", "yes"}:
+        return _heuristic_verdict(reference, prediction)
     prompt = f"""
 Evaluate the model answer against the reference answer.
 
@@ -62,12 +73,7 @@ Return:
         llm = build_llm(settings=settings, temperature=0.0).with_structured_output(JudgeVerdict)
         return llm.invoke(prompt)
     except Exception:
-        score = 5 if _token_f1(reference, prediction) >= 0.95 else 3 if _token_f1(reference, prediction) >= 0.5 else 1
-        return JudgeVerdict(
-            score=score,
-            correct=score >= 3,
-            reasoning="Fallback heuristic judge used because the LLM evaluator was unavailable.",
-        )
+        return _heuristic_verdict(reference, prediction)
 
 
 def _run_ragas(settings: Settings, answers: list[dict[str, Any]]) -> dict[str, Any]:

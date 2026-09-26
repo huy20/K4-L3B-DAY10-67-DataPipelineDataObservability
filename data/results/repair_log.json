@@ -1,0 +1,16 @@
+{
+  "generated_at": "2026-09-26T03:41:20.603061+00:00",
+  "repair_source": "data\\raw\\crossref_records.json",
+  "idempotent": true,
+  "repaired_matches_baseline": true,
+  "rows": {
+    "baseline": 24,
+    "corrupted": 22,
+    "repaired": 24
+  },
+  "fingerprints": {
+    "baseline": "9a9ff245ffea80d6",
+    "corrupted": "da7538c82de0c69f",
+    "repaired": "9a9ff245ffea80d6"
+  }
+}

@@ -25,6 +25,14 @@ def write_csv(df, path: Path) -> None:
     df.to_csv(path, index=False)
 
 
+def write_dataframe(df, csv_path: Path, json_path: Path | None = None) -> None:
+    """Luu dataframe ra CSV va (tuy chon) JSON records, NaN -> null."""
+    write_csv(df, csv_path)
+    if json_path is not None:
+        payload = json.loads(df.to_json(orient="records", force_ascii=False, date_format="iso"))
+        write_json(json_path, payload)
+
+
 def write_text(path: Path, text: str) -> None:
     ensure_parent(path)
     path.write_text(text, encoding="utf-8")
