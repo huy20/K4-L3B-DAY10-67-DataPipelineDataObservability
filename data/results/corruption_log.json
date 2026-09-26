@@ -1,0 +1,70 @@
+{
+  "total_scenarios": 6,
+  "initial_record_count": 24,
+  "corrupted_record_count": 21,
+  "scenarios": [
+    {
+      "scenario": "drop_latest_records",
+      "description": "Dropped 5 newest records (20.8%)",
+      "count": 5,
+      "dropped_paper_ids": [
+        "10.1145/3637528.3671812",
+        "10.1145/3637528.3671808",
+        "10.1145/3637528.3671804",
+        "10.1145/3637528.3671807",
+        "10.1145/3637528.3671824"
+      ],
+      "dropped_titles": [
+        "Continuous Benchmark Evaluation for Enterprise Retrieval Pipelines",
+        "Multi-Agent Consensus for High-Stakes Fact Verification",
+        "Freshness SLAs for Real-Time LLM Knowledge Augmentation",
+        "Synthetic Corruption Testing: Stress-Testing Vector Search Robustness",
+        "Advanced Perspectives on Continuous Benchmark Evaluation for Enterprise Retrieval Pipelines"
+      ]
+    },
+    {
+      "scenario": "blank_summary",
+      "description": "Erased abstract/summary on selected records",
+      "affected_paper_ids": [
+        "10.1145/3637528.3671802",
+        "10.1145/3637528.3671823"
+      ]
+    },
+    {
+      "scenario": "inject_noise",
+      "description": "Injected synthetic noise and garbage tokens into summary",
+      "affected_paper_ids": [
+        "10.1145/3637528.3671822",
+        "10.1145/3637528.3671821"
+      ]
+    },
+    {
+      "scenario": "truncate_title",
+      "description": "Truncated title to fewer than 8 characters to break exact lookup",
+      "affected_paper_ids": [
+        "10.1145/3637528.3671820",
+        "10.1145/3637528.3671810"
+      ]
+    },
+    {
+      "scenario": "stale_date",
+      "description": "Set publication date back to 2020 on 6 records to violate Freshness SLA",
+      "affected_paper_ids": [
+        "10.1145/3637528.3671801",
+        "10.1145/3637528.3671811",
+        "10.1145/3637528.3671806",
+        "10.1145/3637528.3671809",
+        "10.1145/3637528.3671803",
+        "10.1145/3637528.3671805"
+      ]
+    },
+    {
+      "scenario": "duplicate_rows",
+      "description": "Duplicated rows to trigger uniqueness violation in Great Expectations",
+      "duplicated_paper_ids": [
+        "10.1145/3637528.3671802",
+        "10.1145/3637528.3671823"
+      ]
+    }
+  ]
+}

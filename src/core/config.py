@@ -1,8 +1,13 @@
 from __future__ import annotations
 
 from dataclasses import dataclass
-from datetime import UTC, datetime, timedelta
+from datetime import datetime, timedelta, timezone
 from pathlib import Path
+
+try:
+    from datetime import UTC
+except ImportError:
+    UTC = timezone.utc
 import os
 
 from dotenv import load_dotenv
