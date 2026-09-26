@@ -14,7 +14,7 @@
 |---:|---|---|---|---|---|
 | 1 | Phùng Quang Minh Huy | 2A202602610 | [email] | Trưởng nhóm — Full-pipeline + Đánh giá & Hợp nhất bản tốt nhất vào `main` | `report/individual_report.md` |
 | 2 | Lưu Nguyên Khôi | 2A202602547 | [email] | Full-pipeline (Ingestion → Cleaning → Index → Evaluation → Observability → Corruption/Repair) | `report/2A202602547_LuuNguyenKhoi.md` |
-| 3 | Chu Nguyên Dương | 2A202602660 | [email] | Full-pipeline (Ingestion → Cleaning → Index → Evaluation → Observability → Corruption/Repair) | `report/2A202602660_ChuNguyenDuong.md` |
+| 3 | Chu Thùy Dương | 2A202602660 | [email] | Full-pipeline (Ingestion → Cleaning → Index → Evaluation → Observability → Corruption/Repair) | `report/2A202602660_ChuThuyDuong.md` |
 | 4 | Nguyễn Minh Hiếu | 2A202602669 | [email] | Full-pipeline (Ingestion → Cleaning → Index → Evaluation → Observability → Corruption/Repair) | `report/2A202602669_NguyenMinhHieu.md` |
 | 5 | Phan Đại Cương | 2A202602510 | [email] | Full-pipeline (Ingestion → Cleaning → Index → Evaluation → Observability → Corruption/Repair) | `report/2A202602510_PhanDaiCuong.md` |
 
@@ -47,7 +47,7 @@
 - **Công việc chi tiết đã hoàn thành:** Xây dựng đầy đủ ingest → clean → index → eval → observability → corruption/repair; chú trọng chuẩn hóa `text_for_embedding` 5 phần và xử lý ngày thiếu.
 - **Đóng góp chính:** Quy tắc làm sạch dữ liệu và xử lý `published` thiếu theo hướng "unknown, không tính stale".
 
-### ## Chu Nguyên Dương — 2A202602660
+### ## Chu Thùy Dương — 2A202602660
 - **Vai trò:** Full-pipeline implementer.
 - **Công việc chi tiết đã hoàn thành:** Xây dựng đầy đủ pipeline; chú trọng Quality Gate Great Expectations 1.x và Freshness SLA.
 - **Đóng góp chính:** Chuyển đổi sang cú pháp GX 1.x (ephemeral context + ExpectationSuite) thay cho cú pháp cũ.

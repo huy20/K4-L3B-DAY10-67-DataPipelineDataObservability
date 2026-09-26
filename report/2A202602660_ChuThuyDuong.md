@@ -4,7 +4,7 @@
 
 | Thông tin         | Nội dung                  |
 | ------------------ | -------------------------- |
-| Họ và tên       | Chu Nguyên Dương |
+| Họ và tên       | Chu Thùy Dương |
 | MSSV               | 2A202602660 |
 | Khóa/Lớp         | K4 |
 | Tên nhóm         | 67     |
@@ -136,5 +136,5 @@ Quality Gate là tín hiệu phát hiện sớm: **duplicate_rows** kích hoạt
 - [x] Báo cáo không chứa `.env`, API key, token hoặc secret.
 - [x] Báo cáo này không phải bản sao nguyên văn của báo cáo nhóm hoặc báo cáo thành viên khác.
 
-**Họ và tên:** Chu Nguyên Dương
+**Họ và tên:** Chu Thùy Dương
 **Ngày xác nhận:** 2026-09-26

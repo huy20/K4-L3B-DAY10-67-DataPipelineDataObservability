@@ -19,7 +19,7 @@
 | --: | --- | --- | --- | --- |
 | 1 | Phùng Quang Minh Huy | 2A202602610 | Trưởng nhóm — Full-pipeline + Đánh giá & Hợp nhất | Toàn bộ pipeline; chịu trách nhiệm chọn & merge bản tốt nhất vào `main` |
 | 2 | Lưu Nguyên Khôi | 2A202602547 | Full-pipeline implementer | Toàn bộ pipeline (ingestion, cleaning, index, evaluation, observability, corruption/repair, reporting) |
-| 3 | Chu Nguyên Dương | 2A202602660 | Full-pipeline implementer | Toàn bộ pipeline (ingestion, cleaning, index, evaluation, observability, corruption/repair, reporting) |
+| 3 | Chu Thùy Dương | 2A202602660 | Full-pipeline implementer | Toàn bộ pipeline (ingestion, cleaning, index, evaluation, observability, corruption/repair, reporting) |
 | 4 | Nguyễn Minh Hiếu | 2A202602669 | Full-pipeline implementer | Toàn bộ pipeline (ingestion, cleaning, index, evaluation, observability, corruption/repair, reporting) |
 | 5 | Phan Đại Cương | 2A202602510 | Full-pipeline implementer | Toàn bộ pipeline (ingestion, cleaning, index, evaluation, observability, corruption/repair, reporting) |
 
